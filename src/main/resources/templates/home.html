@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+    <title>Ateleier D' Excellence | Fine Jewelry Catalog</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+
+    <style>
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+
+        body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #ffffff;
+        color: #1a1a1a;
+        line-height: 1.6;
+        overflow-x: hidden;
+        }
+
+        .header {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+        padding: 40px 20px;
+        text-align: center;
+        border-bottom: 2px solid #d4af37;
+        box-shadow: 0 4px 20px rgba(212,175, 55, 0.1);
+        }
+
+        .logo{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 3em;
+        font-weight: 700;
+        letter-spacing: 3px;
+        background: linear-gradient(135deg, #d4af37 0%, #f4e4bf 50%, #dfaf37 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        }
+
+        .tagline {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.1em;
+        color: #d4af37;
+        font-weight: 300;
+        letter-spacing: 2px;
+        }
+
+        /* ==== MAIN CONTAINER ===== */
+        .container {
+        max-width:1400px;
+        margin: 60px auto;
+        padding: 0 40px;
+        }
+
+        .welcome-section {
+        text-align: center;
+        margin-bottom: 80px;
+        }
+
+        .welcome-title {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 2.5em;
+        font-weight: 600;
+        color: #d4af37;
+        margin-bottom: 20px;
+        text-align: center;
+        }
+
+        .welcome-text{
+        font-size: 1.2em;
+        color: #d4af37;
+        max-width: 700px;
+        margin: 0 auto 40px;
+        line-height: 1.8;
+        }
+
+        /* ==== MAIN CONTAINER ===== */
+        .category-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(200px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+        }
+
+        .category-card-link{
+        text-decoration: none;
+        color:inherit;
+        display:block;
+        }
+
+        .category-card {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border: 1px solid #333;
+        border-radius: 15px;
+        padding: 40px 30px;
+        text-align: center;
+        transition: all 0.4s ease;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        min-height: 300px;
+        }
+
+        .category-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        transition: opacity 0.4 ease;
+        z-index: 0;
+        }
+
+        .category-card:hover::before {
+        background: rgba(0,0,0,0.3);
+        }
+
+        .category-card:hover {
+        transform: translateY(-10px);
+        border-color: #d4af37;
+        box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .category-content {
+        position: relative;
+        z-index: 1;
+        }
+
+        .category-icon {
+        font-size: 3em;
+        margin-bottom: 20px;
+        display: block;
+        }
+
+        .category-name {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.8em;
+        font-weight: 700;
+        background: linear-gradient(135deg, #dfaf37 0%, #f4e4bf 50%, #dfaf37 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 10px;
+        text-shadow: none;
+
+        }
+
+        .category-count {
+        font-size: 1em;
+        color: #FFD700;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+        font-weight: 500;
+        }
+
+        /* ===== ACCENT COLORS ===== */
+        .category-card:nth-child(1):hover {border-color: #4a90e2; }
+        .category-card:nth-child(2):hover {border-color: #9b59b6; }
+        .category-card:nth-child(3):hover {border-color: #e74c3c; }
+        .category-card:nth-child(4):hover {border-color: #d4af37; }
+
+        /* ===== ABOUT SECTION ===== */
+.about-section {
+    background: linear-gradient(135deg, #f8f6f1 0%, #ffffff 100%);
+    padding: 80px 20px;
+    margin-top: 100px;
+}
+
+.about-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-column,
+.contact-column {
+    text-align: left;
+}
+
+.about-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2em;
+    font-weight: 600;
+    background: linear-gradient(135deg, #d4af37 0%, #f4e4b4 50%, #d4af37 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+}
+
+.about-text {
+    font-size: 1.05em;
+    color: #d4af37;
+    line-height: 1.8;
+}
+
+.contact-info {
+    font-size: 1.05em;
+    color: #d4af37;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.contact-info strong {
+    color: #d4af37;
+    font-weight: 600;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .logo {
+        font-size: 2em;
+    }
+
+    .welcome-title {
+        font-size: 1.8em;
+    }
+
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-content-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+
+        /* ==== FOOTER ==== */
+        .footer {
+        text-align: center;
+        padding: 40px 20px;
+        margin-top: 100px;
+        border-top: 1px solid #333;
+        color: #d4af37;
+        width: 100%;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2em;
+           }
+
+            .welcome-title {
+              font-size: 1.8em;
+            }
+
+            .category-grid {
+               grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- HEADER -->
+<div class="header">
+    <div class="logo">Atelier D'Excellence</div>
+    <div class="tagline">Private Jewelry Collection</div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+    <!-- Welcome Section -->
+    <div class="welcome-section">
+        <h1 class="welcome-title">Welcome to our Catalog!</h1>
+        <p class="welcome-text">
+            Explore our curated collection of fine jewelry.
+            Each piece is crafted with precision and elegance,
+            featuring premium materials and timeless designs.
+        </p>
+    </div>
+
+    <!-- Category Grid -->
+    <div class="category-grid">
+        <a href = "/rings" class = "category-card-link">
+            <div class = "category-card" style = "background-image: url('/images/Rings_and_Bands.jpg');">
+                <div class = "category-content">
+                    <div class = "category-name">Rings</div>
+                    <div class = "category-count"></div>
+            </div>
+        </div>
+        </a>
+
+        <a href = "/earrings" class = "category-card-link">
+                <div class = "category-card" style = "background-image: url('/images/Earrings.webp');">
+                    <div class = "category-content">
+                        <div class = "category-name">Earrings</div>
+                        <div class = "category-count"></div>
+                    </div>
+                </div>
+        </a>
+
+        <a href = "/necklaces" class = "category-card-link">
+            <div class = "category-card" style = "background-image: url('/images/Necklaces.webp');">
+                <div class = "category-content">
+                <div class = "category-name">Necklaces</div>
+                <div class = "category-count"></div>
+                </div>
+            </div>
+        </a>
+
+        <a href = "/bracelets" class = "category-card-link">
+        <div class = "category-card" style = "background-image: url('/images/Bracelets.jpg');">
+            <div class = "category-content">
+             <div class = "category-name">Bracelets</div>
+             <div class = "category-count"></div>
+            </div>
+        </div>
+        </a>
+</div>
+
+    <!-- ABOUT US SECTION -->
+    <div class="about-section">
+        <div class="container">
+            <div class="about-content-grid">
+                <!-- Left Column: About Us -->
+                <div class="about-column">
+                    <h2 class="about-subtitle">About Atelier D'Excellence</h2>
+                    <p class="about-text">
+                        With over 30 years of experience in the jewelry industry, Atelier D'Excellence
+                        is a premier jewelry wholesaler specializing in pieces that blend timeless elegance
+                        with contemporary design. Each and every piece in our collection is meticulously
+                        crafted using the finest materials, ensuring exceptional quality and lasting beauty.
+                    </p>
+                </div>
+
+                <!-- Right Column: Contact Us -->
+                <div class="contact-column">
+                    <h2 class="about-subtitle">Contact Us</h2>
+                    <p class="contact-info">
+                        <strong>Email:</strong> online@atelierdex.com
+                    </p>
+                    <p class="contact-info">
+                        <strong>Phone:</strong> (917) 681-7862
+                    </p>
+                    <p class="contact-info">
+                        <strong>Address:</strong><br>
+                        6W 48th Street, 5th Floor<br>
+                        New York, NY 10036
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- FOOTER -->
+<div class="footer">
+    <p>&copy; 2025 Atelier D'Excellence. Private Collection.</p>
+</div>
+</body>
+</html>
+
+
+
+
