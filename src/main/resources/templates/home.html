@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
-    <title>Ateleier D' Excellence | Fine Jewelry Catalog</title>
+    <title>Atelier D' Excellence | Fine Jewelry Catalog</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,26 +34,35 @@
         box-shadow: 0 4px 20px rgba(212,175, 55, 0.1);
         }
 
-        .logo{
-        font-family: 'Montserrat', sans-serif;
-        font-size: 3em;
-        font-weight: 700;
-        letter-spacing: 3px;
-        background: linear-gradient(135deg, #d4af37 0%, #f4e4bf 50%, #dfaf37 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        text-transform: uppercase;
-        margin-bottom: 10px;
+        .logo-container-vertical{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        cursor: pointer;
         }
 
-        .tagline {
-        font-family: 'Poppins', sans-serif;
-        font-size: 1.1em;
-        color: #d4af37;
-        font-weight: 300;
-        letter-spacing: 2px;
+        .logo-image-vertical{
+        width: 150px;
+        height: 150px;
+        object-fit: contain;
         }
+
+        .brand-name-vertical {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 2.5em;
+        font-weight: 700;
+        letter-spacing: 3px;
+        color: #ffde59;
+        background-clip: text;
+        text-transform: uppercase;
+        }
+
+        .logo-container-vertical: hover {
+        opacity: 0.9;
+        transition: opacity 0.3s ease;
+        }
+
 
         /* ==== MAIN CONTAINER ===== */
         .container {
@@ -196,9 +205,7 @@
     font-family: 'Montserrat', sans-serif;
     font-size: 2em;
     font-weight: 600;
-    background: linear-gradient(135deg, #d4af37 0%, #f4e4b4 50%, #d4af37 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #d4af37;
     background-clip: text;
     margin-bottom: 20px;
 }
@@ -271,8 +278,10 @@
 <body>
 <!-- HEADER -->
 <div class="header">
-    <div class="logo">Atelier D'Excellence</div>
-    <div class="tagline">Private Jewelry Collection</div>
+    <div class="logo-container-vertical" onclick="window.location.href='/'">
+        <img src="/images/logo/atelier-logo-2.png" alt="Atelier D'Excellence Logo" class="logo-image-vertical">
+        <div class="brand-name-vertical">Atelier D'Excellence</div>
+    </div>
 </div>
 
 <!-- MAIN CONTENT -->
