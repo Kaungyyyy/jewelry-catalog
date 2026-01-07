@@ -33,18 +33,33 @@
             box-shadow: 0 4px 20px rgba(212, 175, 55, 0.1);
         }
 
-        .logo {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 3em;
-            font-weight: 700;
-            letter-spacing: 3px;
-            background: linear-gradient(135deg, #d4af37 0%, #f4e4bf 50%, #d4af37 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            cursor: pointer;
+        .logo-container-vertical{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        cursor: pointer;
+        }
+
+        .logo-image-vertical{
+        width: 150px;
+        height: 150px;
+        object-fit: contain;
+        }
+
+        .brand-name-vertical {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 2.5em;
+        font-weight: 700;
+        letter-spacing: 3px;
+        color: #ffde59;
+        background-clip: text;
+        text-transform: uppercase;
+        }
+
+        .logo-container-vertical: hover {
+        opacity: 0.9;
+        transition: opacity 0.3s ease;
         }
 
         .logo:hover {
@@ -234,8 +249,10 @@
 <body>
 <!-- HEADER -->
 <div class="header">
-    <div class="logo" onclick="window.location.href='/'">Atelier D'Excellence</div>
-    <div class="tagline">Private Jewelry Collection</div>
+    <div class="logo-container-vertical" onclick="window.location.href='/'">
+        <img src="/images/logo/atelier-logo-2.png" alt="Atelier D'Excellence Logo" class="logo-image-vertical">
+        <div class="brand-name-vertical">Atelier D'Excellence</div>
+    </div>
 </div>
 
 <!-- MAIN CONTENT -->

@@ -18,6 +18,5 @@ PDF: Manual snapshot export
 ## Out of Scope (Draft v1)
 - FTP inventory sync
 - Live price automation
-- Flipbook animations
 - More detailed presentations(not focused right now)
   
